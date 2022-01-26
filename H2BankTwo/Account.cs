@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace H2BankTwo
 {
-    class Account
+    abstract class Account
     {
         public Account()
         {
@@ -22,5 +22,7 @@ namespace H2BankTwo
             Name = name;
             AccountNumber = accountNumber;
         }
+
+        public abstract void ChargeInterest();
     }
 }

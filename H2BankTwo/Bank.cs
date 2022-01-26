@@ -9,31 +9,38 @@ namespace H2BankTwo
     class Bank
     {
         public string BankName = "Reaper Bank";
-        Account account;
+        List<Account> accounts = new List<Account>();
+        private int _accountNumberCounter = 0;
+        public decimal BankBeholder { get; private set; } = 0;
 
-       
 
         public Account CreateAccount(string name)
         {
-            account = new Account(name);
+            Account account = new Account(name, ++_accountNumberCounter);
+            accounts.Add(account);
             return account;
         }
 
-        public decimal Deposit(decimal amount)
+        public decimal Deposit(int accountNumber, decimal amount)
         {
-            account.Balance += amount;
-            return account.Balance;
+            Account acc = accounts.Find(x => accountNumber == x.AccountNumber);
+            acc.Balance += amount;
+            BankBeholder += amount;
+            return acc.Balance;
         }
 
-        public decimal Withdraw(decimal amount)
+        public decimal Withdraw(int accountNumber,decimal amount)
         {
-            account.Balance -= amount;
-            return account.Balance;
+            Account acc = accounts.Find(x => accountNumber == x.AccountNumber);
+            acc.Balance -= amount;
+            BankBeholder -= amount;
+            return acc.Balance;
         }
 
-        public decimal Balance()
+        public decimal Balance(int accountNumber)
         {
-            return account.Balance;
+            Account acc = accounts.Find(x => accountNumber == x.AccountNumber);
+            return acc.Balance;
         }
 
     }

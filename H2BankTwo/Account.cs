@@ -12,10 +12,13 @@ namespace H2BankTwo
         {
 
         }
-        public string Name { get; set; }
+        public string Name { get; }
 
         public decimal Balance { get; set; }
 
-
+        public Account(string name)
+        {
+            Name = name;
+        }
     }
 }

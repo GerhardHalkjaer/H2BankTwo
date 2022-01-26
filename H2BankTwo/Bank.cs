@@ -6,15 +6,34 @@ using System.Threading.Tasks;
 
 namespace H2BankTwo
 {
-    public class Bank
+    class Bank
     {
         public string BankName = "Reaper Bank";
         Account account;
 
-        public Bank()
+       
+
+        public Account CreateAccount(string name)
         {
-            //load account in from storage
-            
+            account = new Account(name);
+            return account;
+        }
+
+        public decimal Deposit(decimal amount)
+        {
+            account.Balance += amount;
+            return account.Balance;
+        }
+
+        public decimal Withdraw(decimal amount)
+        {
+            account.Balance -= amount;
+            return account.Balance;
+        }
+
+        public decimal Balance()
+        {
+            return account.Balance;
         }
 
     }

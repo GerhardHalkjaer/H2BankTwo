@@ -10,13 +10,21 @@ namespace H2BankTwo
     {
         public MasterCardAccount(string name, int id)
         {
-            //something
-
+            Name = name;
+            AccountNumber = id;
+            Balance = 0;
         }
 
         public override void ChargeInterest()
         {
-            throw new NotImplementedException();
+            if (Balance > 0)
+            {
+                Balance *= 1.001M;
+            }
+            else if (Balance < 0)
+            {
+                Balance *= 1.2M;
+            }
         }
     }
 }

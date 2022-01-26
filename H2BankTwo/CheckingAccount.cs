@@ -10,14 +10,20 @@ namespace H2BankTwo
     {
         public CheckingAccount(string name, int id)
         {
-
+            Name = name;
+            AccountNumber = id;
+            Balance = 0;
         }
 
 
 
         public override void ChargeInterest()
         {
-            throw new NotImplementedException();
+            if (Balance > 0)
+            {
+                //0.5%
+                Balance *= 1.005M;
+            }
         }
     }
 }

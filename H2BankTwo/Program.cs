@@ -21,34 +21,43 @@ namespace H2BankTwo
                         break;
 
                     case "k":
-                        Console.WriteLine("Konto navn");
-                        string navn = Console.ReadLine();
-                        Account acc = bank.CreateAccount(navn);
-                        
-                        Console.WriteLine("konto oprettet med konto nummer: {0}",acc.AccountNumber);
-                        Thread.Sleep(2000);
+                        {
+                            string _accountType ="";
+                            do
+                            {
+                                AccountTypeMenu();
+                                _accountType = Console.ReadLine().ToLower();
+                            } while (!_accountType.Equals("m") && !_accountType.Equals("q") && !_accountType.Equals("c"));
+
+                            Console.WriteLine("Konto navn");
+                            string navn = Console.ReadLine();
+                            Account acc = bank.CreateAccount(navn,_accountType);
+
+                            Console.WriteLine("konto oprettet med konto nummer: {0}", acc.AccountNumber);
+                            Thread.Sleep(2000);
+                        }
                         break;
 
                     case "i":
-                        { 
-                        Console.Write("indtast konto nummer:");
-                        int kontoNummer = int.Parse(Console.ReadLine());
-                        Console.WriteLine("indtast beløb til indsæt");
-                        int indsaet = int.Parse(Console.ReadLine());
-                        Console.WriteLine("balance er nu: {0}",bank.Deposit(kontoNummer,indsaet));
-                        Thread.Sleep(2000);
+                        {
+                            Console.Write("indtast konto nummer:");
+                            int kontoNummer = int.Parse(Console.ReadLine());
+                            Console.WriteLine("indtast beløb til indsæt");
+                            int indsaet = int.Parse(Console.ReadLine());
+                            Console.WriteLine("balance er nu: {0}", bank.Deposit(kontoNummer, indsaet));
+                            Thread.Sleep(2000);
                         }
                         break;
 
                     case "h":
-                        { 
-                        Console.Write("indtast konto nummer:");
-                        int kontoNummer = int.Parse(Console.ReadLine());
-                        Console.WriteLine(bank.Balance(kontoNummer) + "kr.");
-                        Console.WriteLine("indstast beløb der skal hæves");
-                        int hæve = int.Parse(Console.ReadLine());
-                        Console.WriteLine("balance er nu: {0}", bank.Withdraw(kontoNummer,hæve));
-                        Thread.Sleep(2000);
+                        {
+                            Console.Write("indtast konto nummer:");
+                            int kontoNummer = int.Parse(Console.ReadLine());
+                            Console.WriteLine(bank.Balance(kontoNummer) + "kr.");
+                            Console.WriteLine("indstast beløb der skal hæves");
+                            int hæve = int.Parse(Console.ReadLine());
+                            Console.WriteLine("balance er nu: {0}", bank.Withdraw(kontoNummer, hæve));
+                            Thread.Sleep(2000);
                         }
                         break;
 
@@ -56,17 +65,17 @@ namespace H2BankTwo
                         {
                             Console.Write("indtast konto nummer:");
                             int kontoNummer = int.Parse(Console.ReadLine());
-                            Console.WriteLine("saldo er: {0}",bank.Balance(kontoNummer));
+                            Console.WriteLine("saldo er: {0}", bank.Balance(kontoNummer));
                             Thread.Sleep(2000);
                         }
                         break;
 
                     case "b":
                         Console.WriteLine("Denne bank er: " + bank.BankName);
-                        Console.WriteLine("Bankens beholding er: {0}",bank.BankBeholder);
+                        Console.WriteLine("Bankens beholding er: {0}", bank.BankBeholder);
                         Thread.Sleep(2000);
                         break;
-                       
+
                     default:
                         break;
                 }
@@ -95,6 +104,15 @@ namespace H2BankTwo
             Console.WriteLine("*****************************************************");
         }
 
+        static void AccountTypeMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Vælg Konto Type.");
+            Console.WriteLine("c: for Checking konto.");
+            Console.WriteLine("m: for MasterCard konto.");
+            Console.WriteLine("q: for Consumer konto");
+
+        }
 
 
     }

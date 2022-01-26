@@ -14,9 +14,22 @@ namespace H2BankTwo
         public decimal BankBeholder { get; private set; } = 0;
 
 
-        public Account CreateAccount(string name)
+        public Account CreateAccount(string name,string type)
         {
-            Account account = new Account(name, ++_accountNumberCounter);
+            Account account;
+
+            if (type.Equals("c"))
+            {
+                account = new CheckingAccount(name, ++_accountNumberCounter);
+            }
+            else if (type.Equals("m"))
+            {
+                account = new MasterCardAccount(name, ++_accountNumberCounter);
+            }
+            else
+            {
+                account = new SavingsAccount(name, ++_accountNumberCounter);
+            }
             accounts.Add(account);
             return account;
         }

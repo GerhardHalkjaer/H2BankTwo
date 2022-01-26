@@ -13,6 +13,8 @@ Gerhard
 ##### createAccount
 creates and new account with given account name and id and updates accountNumberCouter
 
+3 types of account type
+
 ##### deposite
 adds the amount to the account balance and bank beholder
 
@@ -22,9 +24,19 @@ reduces the amount to the account balanace and bank beholder
 ##### balance
 returns the accounts balance
 
+##### ChargeInterest
+charge interest depending on the account type
+
 ### Known issues
 
 ### ChangeLog
+
+##### 0.4
+added to have 3 type of accounts
+
+added chargeInterest
+
+changed createAccount to acomedate the 3 type of accounts.
 
 ##### 0.3
 changed to support more account

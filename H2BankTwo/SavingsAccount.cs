@@ -10,13 +10,26 @@ namespace H2BankTwo
     {
         public SavingsAccount(string name, int id)
         {
-
+            Name = name;
+            AccountNumber = id;
+            Balance = 0;
         }
 
 
         public override void ChargeInterest()
         {
-            throw new NotImplementedException();
+            if (Balance >= 100000M)
+            {
+                Balance *= 1.03M;
+            }
+            else if (Balance > 50000M)
+            {
+                Balance *= 1.02M;
+            }
+            else
+            {
+                Balance *= 1.01M;
+            }
         }
     }
 }

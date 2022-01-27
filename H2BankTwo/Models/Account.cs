@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace H2BankTwo
+namespace H2BankTwo.Models
 {
     abstract class Account
     {

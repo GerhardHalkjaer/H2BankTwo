@@ -31,6 +31,13 @@ charge interest depending on the account type
 
 ### ChangeLog
 
+##### 0.5
+move classes around, now using repositorys and models
+
+added bank interface
+
+added getAccountList returning list of AccountListItem
+
 ##### 0.4
 added to have 3 type of accounts
 

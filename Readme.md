@@ -31,6 +31,9 @@ charge interest depending on the account type
 
 ### ChangeLog
 
+##### 0.6
+added overdraft exceptions to relavent accounts
+
 ##### 0.5
 move classes around, now using repositorys and models
 

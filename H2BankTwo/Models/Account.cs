@@ -14,7 +14,8 @@ namespace H2BankTwo.Models
         }
         public string Name { get; protected set; }
 
-        public decimal Balance { get; set; }
+        
+        public virtual decimal Balance { get; set; }
         public int AccountNumber { get; protected set; }
 
         public Account(string name, int accountNumber)

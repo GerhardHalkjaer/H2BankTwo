@@ -114,7 +114,7 @@ namespace H2BankTwo
             Console.WriteLine("Vælg Konto Type.");
             Console.WriteLine("c: for Checking konto.");
             Console.WriteLine("m: for MasterCard konto.");
-            Console.WriteLine("q: for Consumer konto");
+            Console.WriteLine("q: for Savings konto");
 
         }
 

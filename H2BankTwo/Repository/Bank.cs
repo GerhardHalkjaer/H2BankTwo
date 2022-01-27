@@ -20,15 +20,15 @@ namespace H2BankTwo.Repository
             Account account;
 
             if (type.Equals("c"))
-            {
+            {//checking
                 account = new CheckingAccount(name, ++_accountNumberCounter);
             }
             else if (type.Equals("m"))
-            {
+            {//master
                 account = new MasterCardAccount(name, ++_accountNumberCounter);
             }
             else
-            {
+            {//savings
                 account = new SavingsAccount(name, ++_accountNumberCounter);
             }
             _accounts.Add(account);
@@ -38,16 +38,28 @@ namespace H2BankTwo.Repository
         public decimal Deposit(int accountNumber, decimal amount)
         {
             Account acc = _accounts.Find(x => accountNumber == x.AccountNumber);
-            acc.Balance += amount;
-            BankBeholder += amount;
+            acc.Balance += Math.Abs(amount);
+            BankBeholder += Math.Abs(amount);
             return acc.Balance;
         }
 
         public decimal Withdraw(int accountNumber, decimal amount)
         {
+            
+
             Account acc = _accounts.Find(x => accountNumber == x.AccountNumber);
-            acc.Balance -= amount;
-            BankBeholder -= amount;
+            
+            try
+            {
+                acc.Balance -= Math.Abs(amount);
+                BankBeholder -= Math.Abs(amount);
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
             return acc.Balance;
         }
 
@@ -73,5 +85,8 @@ namespace H2BankTwo.Repository
 
             return _accLI;
         }
+
+
     }
+
 }

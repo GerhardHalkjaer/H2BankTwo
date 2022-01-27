@@ -31,5 +31,21 @@ namespace H2BankTwo.Models
                 Balance *= 1.01M;
             }
         }
+
+        decimal _balance;
+        public override decimal Balance
+        {
+            get => _balance;
+            set
+            {
+                if (value < 0)
+                { //throw an exception if attemp to draw more money then the account has.
+                    throw new OverdraftException("can't draw more then you have savings account");
+
+                }
+                _balance = value;
+
+            }
+        }
     }
 }

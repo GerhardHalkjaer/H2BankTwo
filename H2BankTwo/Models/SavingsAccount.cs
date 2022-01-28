@@ -30,6 +30,7 @@ namespace H2BankTwo.Models
             {
                 Balance *= 1.01M;
             }
+            
         }
 
         decimal _balance;

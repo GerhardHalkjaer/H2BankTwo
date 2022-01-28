@@ -3,15 +3,18 @@ using System.Threading;
 using H2BankTwo.Repository;
 using H2BankTwo.Models;
 
+
 namespace H2BankTwo
 {
     class Program
     {
+       
         static void Main(string[] args)
         {
-            
 
+            
             Bank bank = new Bank();
+            bank.WriteToLog("Bank Program started");
             string valg = "";
             while (!valg.Equals("x"))
             {

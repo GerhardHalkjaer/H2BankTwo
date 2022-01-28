@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using H2BankTwo.Models;
+using H2BankTwo.Utilities;
 
 namespace H2BankTwo.Repository
 {
@@ -32,6 +33,7 @@ namespace H2BankTwo.Repository
                 account = new SavingsAccount(name, ++_accountNumberCounter);
             }
             _accounts.Add(account);
+            FileLogger.WrithToLog("new account created with id: " + account.AccountNumber);
             return account;
         }
 
@@ -40,6 +42,7 @@ namespace H2BankTwo.Repository
             Account acc = _accounts.Find(x => accountNumber == x.AccountNumber);
             acc.Balance += Math.Abs(amount);
             BankBeholder += Math.Abs(amount);
+            FileLogger.WrithToLog("new deposit on account: " + acc.AccountNumber);
             return acc.Balance;
         }
 
@@ -53,11 +56,11 @@ namespace H2BankTwo.Repository
             {
                 acc.Balance -= Math.Abs(amount);
                 BankBeholder -= Math.Abs(amount);
-
+                FileLogger.WrithToLog("new withdrawl on account: " + acc.AccountNumber);
             }
             catch (Exception e)
             {
-
+                FileLogger.WrithToLog("error withdrawing money");
                 Console.WriteLine(e.Message);
             }
             return acc.Balance;
@@ -84,6 +87,16 @@ namespace H2BankTwo.Repository
 
 
             return _accLI;
+        }
+
+        public string ReadFromLog()
+        {
+            return FileLogger.ReadFromLog();
+        }
+
+        public void WriteToLog(string msg)
+        {
+            FileLogger.WrithToLog(msg);
         }
 
 

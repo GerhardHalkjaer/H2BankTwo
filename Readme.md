@@ -9,6 +9,7 @@ Gerhard
 [GitHub](https://github.com/GerhardHalkjaer/H2BankTwo)
 
 ### Method description
+missing enums
 
 ##### createAccount
 creates and new account with given account name and id and updates accountNumberCouter
@@ -30,6 +31,11 @@ charge interest depending on the account type
 ### Known issues
 
 ### ChangeLog
+
+##### 0.7
+logging added to:
+
+createAccount, Deposit, withdraw, opening program and overdraft Exception
 
 ##### 0.6
 added overdraft exceptions to relavent accounts

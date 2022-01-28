@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using H2BankTwo.Models;
 using H2BankTwo.Utilities;
-
+using H2BankTwo.DAL;
 namespace H2BankTwo.Repository
 {
     class Bank : IBank
@@ -14,8 +14,19 @@ namespace H2BankTwo.Repository
         List<Account> _accounts = new();
         private int _accountNumberCounter = 0;
         public decimal BankBeholder { get; private set; } = 0;
-
-
+        //seperate recording for crossreference or just add up the accounts?
+        private FileRepository fileRepo = new FileRepository();
+        public Bank()
+        {
+          //  _accounts = fileRepo.GetAccounts();
+        }
+        #region bank actions
+        /// <summary>
+        /// create new account
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public Account CreateAccount(string name, string type)
         {
             Account account;
@@ -33,19 +44,33 @@ namespace H2BankTwo.Repository
                 account = new SavingsAccount(name, ++_accountNumberCounter);
             }
             _accounts.Add(account);
+           // fileRepo.SaveAccount(account);
             FileLogger.WrithToLog("new account created with id: " + account.AccountNumber);
+
             return account;
         }
-
+        /// <summary>
+        /// deposit amount to the account specified
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public decimal Deposit(int accountNumber, decimal amount)
         {
             Account acc = _accounts.Find(x => accountNumber == x.AccountNumber);
             acc.Balance += Math.Abs(amount);
             BankBeholder += Math.Abs(amount);
             FileLogger.WrithToLog("new deposit on account: " + acc.AccountNumber);
+          //  fileRepo.UpdateAccount(acc); //save to storage
             return acc.Balance;
         }
 
+        /// <summary>
+        /// withdraw money from the selected account
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public decimal Withdraw(int accountNumber, decimal amount)
         {
             
@@ -63,9 +88,15 @@ namespace H2BankTwo.Repository
                 FileLogger.WrithToLog("error withdrawing money");
                 Console.WriteLine(e.Message);
             }
+           //fileRepo.UpdateAccount(acc); //save to storage
             return acc.Balance;
         }
 
+        /// <summary>
+        /// get balance on selected account
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <returns></returns>
         public decimal Balance(int accountNumber)
         {
             Account acc = _accounts.Find(x => accountNumber == x.AccountNumber);
@@ -88,7 +119,9 @@ namespace H2BankTwo.Repository
 
             return _accLI;
         }
+        #endregion
 
+        #region logging
         public string ReadFromLog()
         {
             return FileLogger.ReadFromLog();
@@ -99,7 +132,7 @@ namespace H2BankTwo.Repository
             FileLogger.WrithToLog(msg);
         }
 
-
+        #endregion
     }
 
 }

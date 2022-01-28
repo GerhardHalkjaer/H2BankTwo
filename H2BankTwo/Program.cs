@@ -83,6 +83,13 @@ namespace H2BankTwo
                         Thread.Sleep(2000);
                         break;
 
+                    case "g":
+                        Console.WriteLine("Log..");
+                        Console.WriteLine(bank.ReadFromLog());
+                        Console.WriteLine("press any key to constinue..");
+                        Console.ReadKey();
+                        break;
+
                     default:
                         break;
                 }
@@ -107,6 +114,7 @@ namespace H2BankTwo
             Console.WriteLine("* h = Hæv beløb \t\t\t\t    *");
             Console.WriteLine("* s = Vis Saldo \t\t\t\t    *");
             Console.WriteLine("* b = Vis bank \t\t\t\t\t    *");
+            Console.WriteLine("* g = Vis log \t\t\t\t\t    *");
             Console.WriteLine("* x = Afslut \t\t\t\t\t    *");
             Console.WriteLine("*****************************************************");
         }

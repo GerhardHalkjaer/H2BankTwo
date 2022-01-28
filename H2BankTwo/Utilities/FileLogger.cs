@@ -34,7 +34,7 @@ namespace H2BankTwo.Utilities
             string returnString = "";
             foreach (string line in File.ReadLines(directory + fileName))
             {
-                returnString += line + " ";
+                returnString += line + "\n";
             }
             return returnString;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace H2BankTwo.Models
 {
-    abstract class Account
+    public abstract class Account
     {
         public Account()
         {
@@ -14,7 +14,7 @@ namespace H2BankTwo.Models
         }
         public string Name { get; protected set; }
 
-        
+
         public virtual decimal Balance { get; set; }
         public int AccountNumber { get; protected set; }
 

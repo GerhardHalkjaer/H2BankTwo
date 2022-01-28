@@ -25,12 +25,22 @@ reduces the amount to the account balanace and bank beholder
 ##### balance
 returns the accounts balance
 
+##### GetAccountList
+
+converts the list of accounts to list of AccountListItem and returns it.
+
+
+
+
 ##### ChargeInterest
 charge interest depending on the account type
 
 ### Known issues
 
 ### ChangeLog
+
+##### 0.8
+accounts are now being saved in an xml file in storage.
 
 ##### 0.7
 logging added to:

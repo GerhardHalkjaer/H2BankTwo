@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using H2BankTwo.Models;
-using H2BankTwo.Utilities;
+﻿using H2BankTwo.Utilities;
 using H2BankTwo.DAL;
 namespace H2BankTwo.Repository
 {

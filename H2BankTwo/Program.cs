@@ -1,9 +1,5 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using H2BankTwo.Repository;
-using H2BankTwo.Models;
-
-
 namespace H2BankTwo
 {
     class Program
